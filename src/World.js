@@ -414,9 +414,9 @@ function initTextures(gl, n) {
   }
   // register the event handlers to be called on loading an image
   image0.onload = function() { sendTextureToGLSL(image0, 0); };
-  image0.src = '../images/block.png';
+  image0.src = 'images/block.png';
   image1.onload = function() { sendTextureToGLSL(image1, 1); };
-  image1.src = '../images/brick.png';
+  image1.src = 'images/brick.png';
   return true;
 }
 
