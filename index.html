@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Blocky World</title>
+  </head>
+
+  <body onload="main()">
+    <center>
+      <canvas id="webgl" width="700" height="500">
+      Please use a browser that supports "canvas"
+      </canvas>
+
+      <p id="numdot">ms: 0 fps: Infinity</p>
+      Sus level: <input type="range" min="0" max="4" value="0" class="slider" id="susSlide">
+      <p>
+      Light Source Color:
+      R: <input type="range" min="0" max="10" value="10" class="slider" id="rSlide">
+      G: <input type="range" min="0" max="10" value="10" class="slider" id="gSlide">
+      B: <input type="range" min="0" max="10" value="10" class="slider" id="bSlide">
+      <p>
+      Light Movement Animation:
+      <button type="button" id="lightAniOn">On</button>
+      <button type="button" id="lightAniOff">Off</button>
+      Light position: <input type="range" min="0" max="360" value="0" class="slider" id="lPosSlide">
+      <p>
+      Lighting:
+      <button type="button" id="lightOn">On</button>
+      <button type="button" id="lightOff">Off</button>
+      Type:
+      <button type="button" id="spotlightOff">Normal</button>
+      <button type="button" id="spotlightOn">Spotlight</button>
+      <p>
+      Normal Calculation:
+      <button type="button" id="normOn">On</button>
+      <button type="button" id="normOff">Off</button>
+      Normal Visualization:
+      <button type="button" id="normVOn">On</button>
+      <button type="button" id="normVOff">Off</button>
+      <p>
+      <div style="border: solid black 4px; padding: 4px; border-radius: 4px; width: 60%;">
+        Controls: W,A,S,D to move. Arrow keys (or Q, E) to rotate.
+        You can fly if you travel forward while looking up (with up arrow).
+        <p>
+        Different objects can have different shininess (ratio of specular to diffuse lighting).
+        Modified diffuse lighting to take distance from light source into account.
+        <p>
+        Lighting works with blocky world and animals (use slider to make animals appear).
+        <p>
+        The rotating blue sphere and animals utilize normal lighting.
+        This is apparent when looking at the blue sphere with the light movement animation off. 
+      </div>
+    </center>
+
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="lib/cuon-matrix.js"></script>
+    <script src="src/Triangle.js"></script>
+    <script src="src/Cube.js"></script>
+    <script src="src/Sphere.js"></script>
+    <script src="src/Map.js"></script>
+    <script src="src/World.js"></script>
+
+  </body>
+</html>
+
+
+
+
