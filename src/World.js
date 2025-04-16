@@ -547,10 +547,11 @@ function main() {
 }
 
 function tick() {
-  var duration = performance.now() - g_lastFrame;
-  g_lastFrame = performance.now();
+  var thisFrame = performance.now();
+  var duration = thisFrame - g_lastFrame;
+  g_lastFrame = thisFrame;
   sendTextToHTML("ms: " + Math.floor(duration) +
-    " fps: " + Math.floor(10000/duration), "numdot");
+    " fps: " + Math.floor(1000/duration), "numdot");
 
   updateAnimationAngles();
   moveCamera(duration);
