@@ -533,6 +533,24 @@ function main() {
   // Specify the color for clearing <canvas>
   gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
+  // create spheres
+  s1 = new Sphere();
+  s1.textureNum = 0;
+  s1.shiny = 0.8;
+  s1.color = [0.0, 0.0, 0.0, 1.0];
+
+  s2 = new Sphere();
+  s2.textureNum = 1;
+  s2.shiny = 0.2;
+  s2.color = [0.0, 0.0, 0.0, 1.0];
+  s2.matrix.translate(10, 5, 20);
+
+  s3 = new Sphere();
+  s3.textureNum = -2;
+  s3.shiny = 0.9;
+  s3.color = [0.1, 0.7, 0.2, 1.0];
+  s3.matrix.translate(13, 3, 25);
+
   // create map
   wallMap = new Map(32, 32);
   wallMap.textureNum = 0;
@@ -695,25 +713,12 @@ function renderAllShapes() {
   skyBox.render();
 
   // spheres
-  var s1 = new Sphere();
-  s1.textureNum = 0;
-  s1.shiny = 0.8;
-  s1.color = [0.0, 0.0, 0.0, 1.0];
-  s1.matrix.translate(8, 4, 19);
-  s1.matrix.rotate(g_runningCircleDeg, 0, 1, 0);
+  s1.matrix.setRotate(g_runningCircleDeg, 0, 1, 0);
+  s1.matrix.setTranslate(8, 4, 19);
   s1.normalMatrix.setInverseOf(s1.matrix).transpose();
+  
   s1.render();
-  var s2 = new Sphere();
-  s2.textureNum = 1;
-  s2.shiny = 0.2;
-  s2.color = [0.0, 0.0, 0.0, 1.0];
-  s2.matrix.translate(10, 5, 20);
   s2.render();
-  var s3 = new Sphere();
-  s3.textureNum = -2;
-  s3.shiny = 0.9;
-  s3.color = [0.1, 0.7, 0.2, 1.0];
-  s3.matrix.translate(13, 3, 25);
   s3.render();
 
   // blocks
