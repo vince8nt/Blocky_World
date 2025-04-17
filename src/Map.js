@@ -29,6 +29,20 @@ class Map {
   	}
   }
 
+  setSubtexture(x, y, texSize) {
+	texSize = 1 / texSize;
+	x *= texSize;
+	y *= texSize;
+	console.log(this.shellUV.length);
+	console.log(this.shellUV.length);
+	for (var i = 0; i < this.shellUV.length; i += 2) {
+		this.shellUV[i] *= texSize;
+		this.shellUV[i] += x;
+		this.shellUV[i+1] *= texSize;
+		this.shellUV[i+1] += y;
+	}
+  }
+
   createShell() {
   	for (var y = 0; y < this.length; ++y) {
 	    for (var x = 0; x < this.width; ++x) {

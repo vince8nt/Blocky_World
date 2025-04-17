@@ -416,7 +416,7 @@ function initTextures(gl, n) {
   image0.onload = function() { sendTextureToGLSL(image0, 0); };
   image0.src = 'images/block.png';
   image1.onload = function() { sendTextureToGLSL(image1, 1); };
-  image1.src = 'images/brick.png';
+  image1.src = 'images/terrain.png';
   return true;
 }
 
@@ -437,6 +437,7 @@ function sendTextureToGLSL(image, num) {
     gl.bindTexture(gl.TEXTURE_2D, texture);
     // set the texture parameters
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
     // set the texture image
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);
     // set the texture unit 0 to the sampler
@@ -451,6 +452,7 @@ function sendTextureToGLSL(image, num) {
     gl.bindTexture(gl.TEXTURE_2D, texture);
     // set the texture parameters
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
     // set the texture image
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);
     // set the texture unit 1 to the sampler
@@ -519,6 +521,7 @@ function buildMap() {
   // create shell for faster rendering
   wallMap.createShell();
   structMap.createShell();
+  structMap.setSubtexture(8, 14, 16);
 }
 
 function main() {
