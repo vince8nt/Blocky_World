@@ -563,6 +563,11 @@ function main() {
   structMap.shiny = 0.0;
   buildMap();
 
+  m.textureNum = 1;
+  m.shiny = 0.0;
+  m.createShell();
+  m.setSubtexture(8, 8, 16);
+
   // start ticking
   requestAnimationFrame(tick);
 }
@@ -725,8 +730,9 @@ function renderAllShapes() {
   s3.render();
 
   // blocks
-  wallMap.drawShell();
-  structMap.drawShell();
+  // wallMap.drawShell();
+  // structMap.drawShell();
+  m.drawShell();
 
   // imposters
   if (g_sus < 1) return;

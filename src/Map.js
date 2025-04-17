@@ -1,24 +1,24 @@
 class Map {
 	constructor(width, length) {
-    this.color = [0.3, 0.3, 0.3, 1.0];
-    this.matrix = new Matrix4();
-    this.normalMatrix = new Matrix4();
-    this.length = length;
-    this.width = width;
-    this.textureNum = -2;
-    this.shiny = 0.5;
-    this.map = [];
-    for (var y = 0; y < this.length; ++y) {
-    	var row = [];
-	    for (var x = 0; x < this.width; ++x) {
-	    	row.push(0);
-	    }
-	    this.map.push(row);
-	  }
-	  this.shellVerts  = [];
-	  this.shellUV     = [];
-	  this.shellNormal = [];
-  }
+		this.color = [0.3, 0.3, 0.3, 1.0];
+		this.matrix = new Matrix4();
+		this.normalMatrix = new Matrix4();
+		this.length = length;
+		this.width = width;
+		this.textureNum = -2;
+		this.shiny = 0.5;
+		this.map = [];
+		for (var y = 0; y < this.length; ++y) {
+			var row = [];
+			for (var x = 0; x < this.width; ++x) {
+				row.push(0);
+			}
+			this.map.push(row);
+		}
+		this.shellVerts  = [];
+		this.shellUV     = [];
+		this.shellNormal = [];
+	}
 
   addBlocks(x, y, width, length, height) {
   	for (var i = x; i < x + width; ++i) {
@@ -33,8 +33,6 @@ class Map {
 	texSize = 1 / texSize;
 	x *= texSize;
 	y *= texSize;
-	console.log(this.shellUV.length);
-	console.log(this.shellUV.length);
 	for (var i = 0; i < this.shellUV.length; i += 2) {
 		this.shellUV[i] *= texSize;
 		this.shellUV[i] += x;
@@ -63,7 +61,7 @@ class Map {
     				this.shellNormal = this.shellNormal.concat( [0,0,-1, 0,0,-1, 0,0,-1] );
     				this.shellNormal = this.shellNormal.concat( [0,0,-1, 0,0,-1, 0,0,-1] );
 	        }
-	        if (y == 31 || this.map[y + 1][x] <= h) { // back face
+	        if (y == this.length - 1 || this.map[y + 1][x] <= h) { // back face
 	        	this.shellVerts = this.shellVerts.concat( [x  ,h  ,y+1,  x+1,h+1,y+1,  x+1,h  ,y+1] );
     				this.shellVerts = this.shellVerts.concat( [x  ,h  ,y+1,  x  ,h+1,y+1,  x+1,h+1,y+1] );
     				this.shellUV = this.shellUV.concat( [0,0, 1,1, 1,0] );
@@ -79,7 +77,7 @@ class Map {
 				    this.shellNormal = this.shellNormal.concat( [-1,0,0, -1,0,0, -1,0,0] );
     				this.shellNormal = this.shellNormal.concat( [-1,0,0, -1,0,0, -1,0,0] );
 	        }
-	        if (x == 31 || this.map[y][x + 1] <= h) { // right face
+	        if (x == this.width - 1 || this.map[y][x + 1] <= h) { // right face
 	        	this.shellVerts = this.shellVerts.concat( [x+1,h  ,y  ,  x+1,h,  y+1,  x+1,h+1,y+1] );
 				    this.shellVerts = this.shellVerts.concat( [x+1,h  ,y  ,  x+1,h+1,y+1,  x+1,h+1,y  ] );
 				    this.shellUV = this.shellUV.concat( [1,0, 0,0, 0,1] );
